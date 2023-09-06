@@ -1,16 +1,12 @@
-function Person(name, age) {
+// role-playing game.
+
+function Hero(name, level) {
   this.name = name;
-  this.age = age;
-  this.activity = this.activity;
+  this.level = level;
 }
 
-const user1 = new Person("nico", 34, "lifting");
-const user2 = new Person("didi", 3, "jumping");
-
-Person.prototype.sayHi = function (name, age, workOuts) {
-  return `Hi, my name is ${this.name}. I am ${this.age}.`;
+let hero1 = new Hero("didi wu tintin", 1);
+console.log(hero1);
+Hero.prototype.greet = function () {
+  return `${this.name} say Hi!`;
 };
-Person.prototype.work = (name, activity) => {
-  return `${this.name} enjoys`;
-};
-console.log(user1.sayHi());

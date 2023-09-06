@@ -54,3 +54,48 @@ console.log(player2.sayGreet());
 
 console.log(player1.getTeam());
 console.log(player2.getTeam());
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.activity = this.activity;
+}
+
+const user1 = new Person("nico", 34, "lifting");
+const user2 = new Person("didi", 3, "jumping");
+
+Person.prototype.sayHi = function (name, age, workOuts) {
+  return `Hi, my name is ${this.name}. I am ${this.age}.`;
+};
+Person.prototype.work = (name, activity) => {
+  return `${this.name} enjoys`;
+};
+console.log(user1.sayHi());
+
+let x = {};
+console.log(Object.getPrototypeOf(x));
+console.log(x.__proto__);
+function User(name, age, gender) {
+  this.name = name;
+  this.age = age;
+  this.gender = gender;
+  this.userKey = function () {
+    const char = "abcdefghijklmnopqrstuvwxyz123456789!@#$%^&*()_+{}[]=?.".split(
+      ""
+    );
+    let pasword = [];
+    for (let i = 0; i < 10; i++) {
+      let random = Math.floor(Math.random() * char.length);
+      pasword.push(char[random]);
+    }
+    return `Your new password: "${pasword.join("")}"`;
+  };
+}
+
+const me = new User("nico", 34, "Male");
+console.log(me);
+console.log(me.userKey());
+User.prototype.greet = function () {
+  return `Hi, my name is ${this.name}. I am ${this.age} years old`;
+};
+console.log(me.greet());
+console.log(Object.getPrototypeOf(User));
