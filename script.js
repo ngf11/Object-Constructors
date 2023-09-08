@@ -1,12 +1,19 @@
-// role-playing game.
+let user = {
+  name: "Nicolas",
+  surname: "fuentes",
 
-function Hero(name, level) {
-  this.name = name;
-  this.level = level;
-}
-
-let hero1 = new Hero("didi wu tintin", 1);
-console.log(hero1);
-Hero.prototype.greet = function () {
-  return `${this.name} say Hi!`;
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
 };
+let admin = {
+  __proto__: user,
+  isAdmin: true,
+};
+console.log(admin.fullName);
+admin.fullName = "Didi Wu";
+console.log(admin.fullName);
+console.log(user.fullName);

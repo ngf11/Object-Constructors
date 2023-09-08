@@ -99,3 +99,76 @@ User.prototype.greet = function () {
 };
 console.log(me.greet());
 console.log(Object.getPrototypeOf(User));
+
+// role-playing game.
+
+function Hero(name, level) {
+  this.name = name;
+  this.level = level;
+}
+
+function Warrior(name, level, weapon) {
+  Hero.call(this, name, level);
+  this.weapon = weapon;
+}
+
+function Healer(name, level, spell) {
+  Hero.call(this, name, level);
+  this.spell = spell;
+}
+
+Hero.prototype.greet = function () {
+  return `${this.name} say Hi!`;
+};
+
+Warrior.prototype.attack = function () {
+  return `${this.name} attacks with ${this.weapon}`;
+};
+
+Healer.prototype.heal = function () {
+  return `${this.name} casts ${this.spell}`;
+};
+
+const hero1 = new Hero("didi wu tintin", 1);
+const warrior1 = new Warrior("nico", 1, "Axe");
+const healer1 = new Healer("siggy", 1, "Black Magik");
+Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
+Object.setPrototypeOf(Healer.prototype, Hero.prototype);
+
+console.log(hero1);
+console.log(warrior1);
+console.log(warrior1.attack());
+console.log(healer1);
+console.log(healer1.heal());
+console.log(warrior1.greet());
+console.log(healer1.greet());
+console.log(Object.getPrototypeOf(hero1));
+console.log(Object.getPrototypeOf(Hero));
+
+
+let animal = {
+  eats: true,
+  walk() {
+    return "walking";
+  },
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+
+let longEar = {
+  earLength: 10,
+  __proto__: animal,
+};
+
+rabbit.walk = function () {
+  return "rabbit! Bounce Bounce";
+};
+// rabbit.__proto__ = animal;
+// console.log(rabbit.eats);
+// console.log(rabbit.walk());
+console.log(longEar.eats);
+console.log(longEar.walk());
+console.log(rabbit.walk());
