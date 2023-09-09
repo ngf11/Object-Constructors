@@ -1,19 +1,22 @@
-let user = {
-  name: "Nicolas",
-  surname: "fuentes",
+let hamster = {
+  stomach: [],
 
-  set fullName(value) {
-    [this.name, this.surname] = value.split(" ");
-  },
-  get fullName() {
-    return `${this.name} ${this.surname}`;
+  eat(food) {
+    this.stomach = [food];
   },
 };
-let admin = {
-  __proto__: user,
-  isAdmin: true,
+
+let speedy = {
+  __proto__: hamster,
 };
-console.log(admin.fullName);
-admin.fullName = "Didi Wu";
-console.log(admin.fullName);
-console.log(user.fullName);
+
+let lazy = {
+  __proto__: hamster,
+};
+
+// This one found the food
+speedy.eat("apple");
+console.log(speedy.stomach); // apple
+
+// This one also has it, why? fix please.
+console.log(lazy.stomach); // apple

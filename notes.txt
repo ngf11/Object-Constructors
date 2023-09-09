@@ -172,3 +172,118 @@ rabbit.walk = function () {
 console.log(longEar.eats);
 console.log(longEar.walk());
 console.log(rabbit.walk());
+let user = {
+  name: "Nicolas",
+  surname: "fuentes",
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
+};
+let admin = {
+  __proto__: user,
+  isAdmin: true,
+};
+console.log(admin.fullName);
+admin.fullName = "Didi Wu";
+console.log(admin.fullName);
+console.log(user.fullName);
+let animal = {
+  eats: true,
+  walk() {
+    return "Animal walk";
+  },
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+rabbit.walk = function () {
+  return "Rabbit, Bounce Bounce!";
+};
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit,
+};
+
+console.log(rabbit.walk());
+
+let user = {
+  name: "Nico",
+  surname: "Fuentes",
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
+};
+
+let admin = {
+  __proto__: user,
+  isAdmin: true,
+};
+console.log(admin.fullName);
+
+admin.fullName = "Didi Wu";
+
+console.log(admin.fullName);
+console.log(user.fullName);
+
+let animal = {
+  eats: true,
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+
+// Object.keys only returns own keys
+console.log(Object.keys(rabbit)); // jumps
+
+// for..in loops over both own and inherited keys
+for (let prop in rabbit) console.log(prop); // jumps, then eats
+
+for (let prop in rabbit) {
+  let isOwn = rabbit.hasOwnProperty(prop);
+
+  if (isOwn) {
+    console.log(`Our: ${prop}`); // Our: jumps
+  } else {
+    console.log(`Inherited: ${prop}`); // Inherited: eats
+  }
+}
+
+let head = {
+  glasses: 1,
+};
+
+let table = {
+  pen: 3,
+  __proto__: head,
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table,
+};
+
+let pockets = {
+  money: 2000,
+  __proto__: bed,
+};
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
