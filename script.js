@@ -129,7 +129,7 @@ nico.studing(5);
 siggy.sleep(5);
 console.log(didiWU, nico, siggy);
  */
-
+/* 
 function Person(name, energy) {
   this.name = name;
   this.energy = energy;
@@ -169,3 +169,91 @@ for (let key in nico) {
     console.log(`Key: ${key}. Value: ${nico[key]}`);
   }
 }
+ */
+
+/*
+This is wastful we should use inheretance 
+
+function Animal(name, energy) {
+  this.name = name;
+  this.energy = energy;
+}
+
+Animal.prototype.PLAY = function (length) {
+  console.log(`${this.name} is playing`);
+  this.energy -= length;
+};
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating`);
+  this.energy += amount;
+};
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping`);
+  this.energy += length;
+};
+
+// const milo = new Animal("Milo", 5);
+// const koda = new Animal("Koda", 8);
+
+ function Dog(name, energy, breed) {
+this.name = name;
+  this.energy = energy;
+  this.breed = breed;
+}
+
+Dog.prototype.PLAY = function (length) {
+  console.log(`${this.name} is playing`);
+  this.energy -= length;
+};
+
+Dog.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating`);
+  this.energy += amount;
+};
+Dog.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping`);
+  this.energy += length;
+};
+
+Dog.prototype.bark = function () {
+  console.log("Woof Woof");
+  this.energy -= 0.5;
+};
+const milo = new Dog("Milo", 5, "Bulldog");
+const koda = new Dog("Koda", 8, "Pitbull"); */
+
+function Animal(name, energy) {
+  this.name = name;
+  this.energy = energy;
+}
+
+Animal.prototype.PLAY = function (length) {
+  console.log(`${this.name} is playing`);
+  this.energy -= length;
+};
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating`);
+  this.energy += amount;
+};
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping`);
+  this.energy += length;
+};
+
+function Dog(name, energy, breed) {
+  Animal.call(this, name, energy);
+  this.breed = breed;
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.bark = function () {
+  console.log("Woof Woof");
+  this.energy -= 0.5;
+};
+Dog.prototype.constructor = Dog;
+const milo = new Dog("Milo", 6, "Bulldog");
+console.log(milo);
+console.log(milo.eat(2));
+console.log(milo.bark());
