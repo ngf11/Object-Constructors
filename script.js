@@ -97,7 +97,7 @@ didiWU.eating(10);
 nico.studing(5);
 siggy.sleep(5);
 console.log(didiWU, nico, siggy); */
-
+/* 
 class Person {
   constructor(name, energy) {
     this.name = name;
@@ -128,3 +128,44 @@ didiWU.eating(10);
 nico.studing(5);
 siggy.sleep(5);
 console.log(didiWU, nico, siggy);
+ */
+
+function Person(name, energy) {
+  this.name = name;
+  this.energy = energy;
+}
+
+Person.prototype.lifting = function (length) {
+  console.log(`${this.name} is lifting`);
+  this.energy -= length;
+};
+Person.prototype.studing = function (length) {
+  console.log(`${this.name} is studing`);
+  this.energy -= length;
+};
+Person.prototype.eating = function (amount) {
+  console.log(`${this.name} is eating`);
+  this.energy += amount;
+};
+Person.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping`);
+  this.energy += length;
+};
+
+const nico = new Person("nico", 8);
+const didiWU = new Person("Didi Wu", 100);
+const siggy = new Person("Siggy", 5);
+didiWU.eating(10);
+nico.studing(5);
+siggy.sleep(5);
+console.log(didiWU, nico, siggy);
+
+for (let key in nico) {
+  console.log(`Key: ${key}. Value: ${nico[key]}`);
+}
+
+for (let key in nico) {
+  if (nico.hasOwnProperty(key)) {
+    console.log(`Key: ${key}. Value: ${nico[key]}`);
+  }
+}
