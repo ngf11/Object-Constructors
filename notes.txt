@@ -341,3 +341,17 @@ User.prototype.talk = function () {
 const me = new User("nico", 34);
 console.log(me);
 console.log(me.talk());
+
+let arr = ["nico", "fuentes"];
+let object = {
+  name: "nico",
+  city: "Kearny",
+  getIntro: function () {
+    console.log(`Hi min name is ${this.name}. I'm from ${this.city}`);
+  },
+};
+
+console.log(arr.__proto__);
+console.log(arr.__proto__.__proto__ === Object.prototype);
+console.log(Object.__proto__ === Object.prototype);
+console.log(Object.__proto__.__proto__ === Object.prototype);
