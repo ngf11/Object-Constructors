@@ -355,3 +355,15 @@ console.log(arr.__proto__);
 console.log(arr.__proto__.__proto__ === Object.prototype);
 console.log(Object.__proto__ === Object.prototype);
 console.log(Object.__proto__.__proto__ === Object.prototype);
+const user = {
+  firstName: "nico",
+  lastName: "Fuentes",
+  hobbies: ["programing", "reading"],
+  listHobbies: function () {
+    this.hobbies.forEach((hobby) => {
+      console.log(this.firstName);
+      console.log(hobby);
+    });
+  },
+};
+console.log(user.listHobbies());
