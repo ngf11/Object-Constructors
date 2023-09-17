@@ -374,3 +374,75 @@ function Users(name) {
 
 const nico = new Users("nico");
 console.log(nico);
+let fruit = "nico";
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+console.log(bag.nico);
+function User(name, age, state) {
+//   (this.name = name), (this.age = age), (this.state = state);
+// }
+
+// const nico = new User("nico", 34, "New Jersey");
+// // console.log(nico);
+// for (key in nico) {
+//   console.log(key);
+//   //   console.log(nico[key]);
+// }
+let schedule = {};
+function isEmpty(obj) {
+  for (key in obj) {
+    return false;
+  }
+  return true;
+}
+console.log(isEmpty(schedule));
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130,
+};
+let sum = 0;
+for (let key in salaries) {
+  sum += salaries[key];
+}
+console.log(sum);
+function sumSalaries(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key];
+  }
+  return sum;
+}
+console.log(salaries);
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu",
+};
+
+function multiplyNumeric(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] == "number") {
+      obj[key] *= 2;
+    }
+  }
+}
+multiplyNumeric(menu);
+console.log(menu);
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu",
+};
+
+function multiplyNumeric(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] == "number") {
+      obj[key] *= 2;
+    }
+  }
+}
+multiplyNumeric(menu);
+console.log(menu);
