@@ -588,3 +588,15 @@ const transport = data.reduce(function (obj, item) {
   return obj;
 }, {});
 console.log(transport);
+function Book(title, author, pages, read) {
+  this.titel = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+}
+Book.prototype.info = function () {
+  return `${this.titel} by ${this.author} has ${this.pages} pages. Status: ${this.read}. `;
+};
+const dailyStoic = new Book("Daily Stoic", "Rayan Holiday", 369, "reading");
+const beHereNow = new Book("Be Here now", "Ram Dass", 366, "not read yet");
+console.log(dailyStoic);
