@@ -600,3 +600,25 @@ Book.prototype.info = function () {
 const dailyStoic = new Book("Daily Stoic", "Rayan Holiday", 369, "reading");
 const beHereNow = new Book("Be Here now", "Ram Dass", 366, "not read yet");
 console.log(dailyStoic);
+function Player(name, marker) {
+  this.name = name;
+  this.marker = marker;
+}
+Player.prototype.getMarker = function () {
+  console.log(`My marker is '${this.marker}'`);
+};
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayName = function () {
+  console.log(`Hi! my name is ${this.name}`);
+};
+
+Object.setPrototypeOf(Player.prototype, Person.prototype);
+
+const playerOne = new Player("nico", "X");
+const playerTwo = new Player("Siggy", "O");
+const playerThree = new Player("Didi Wu Tintin", "@");
+playerOne.sayName();

@@ -1,22 +1,14 @@
-function Player(name, marker) {
-  this.name = name;
-  this.marker = marker;
-}
-Player.prototype.getMarker = function () {
-  console.log(`My marker is '${this.marker}'`);
-};
+let x = {};
+console.log(x.__proto__ === Object.prototype);
+console.log(Object.getPrototypeOf(x));
+console.log(x.constructor);
 
-function Person(name) {
-  this.name = name;
-}
+let y = [];
+console.log(y.__proto__.__proto__);
+console.log(y.__proto__ === Array.prototype);
+console.log(y.__proto__.__proto__ === Object.prototype);
 
-Person.prototype.sayName = function () {
-  console.log(`Hi! my name is ${this.name}`);
-};
+Array.prototype.isPrototypeOf(y); // true
+Object.prototype.isPrototypeOf(Array); // true
 
-Object.setPrototypeOf(Player.prototype, Person.prototype);
-
-const playerOne = new Player("nico", "X");
-const playerTwo = new Player("Siggy", "O");
-const playerThree = new Player("Didi Wu Tintin", "@");
-playerOne.sayName();
+y instanceof Array; // true
