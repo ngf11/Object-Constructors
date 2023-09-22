@@ -680,3 +680,34 @@ console.log(Object.getPrototypeOf(hero1)); //Hero
 console.log(hero1.greet());
 console.log(hero2.attack());
 console.log(hero2.greet());
+let animal = {
+  eat: true,
+  walk() {
+    return "Animal walk";
+  },
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+
+rabbit.walk = function () {
+  return "Rabbit! Bounce-bounce!";
+};
+let longEar = {
+  earLength: 10,
+  __proto__: animal,
+};
+console.log(rabbit.eat);
+console.log(rabbit.walk());
+console.log(longEar.walk());
+for (let prop in rabbit) {
+  let isOwn = rabbit.hasOwnProperty(prop);
+
+  if (isOwn) {
+    console.log(`Our: ${prop}`); // Our: jumps
+  } else {
+    console.log(`Inherited: ${prop}`); // Inherited: eats
+  }
+}
