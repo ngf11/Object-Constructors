@@ -34,7 +34,7 @@ let animalMethods = {
 };
 */
 
-function Animal(name, energy) {
+/* function Animal(name, energy) {
   let animal = Object.create(Animal.prototype);
   animal.name = name;
   animal.energy = energy;
@@ -54,9 +54,38 @@ Animal.prototype.sleep = function (length) {
 Animal.prototype.play = function (length) {
   console.log(`${this.name} is playing`);
   this.energy -= length;
-};
-const milo = Animal("Milo", 5);
-const cami = Animal("Camilia", 3);
+}; */
+
+// function Animal(name, energy) {
+//   this.name = name;
+//   this.energy = energy;
+// }
+// Animal.prototype.eat = function (amount) {
+//   console.log(`${this.name} is eating `);
+//   this.energy += amount;
+// };
+
+// Animal.prototype.sleep = function (length) {
+//   console.log(`${this.name} is sleeping`);
+//   this.energy += length;
+// };
+
+// Animal.prototype.play = function (length) {
+//   console.log(`${this.name} is playing`);
+//   this.energy -= length;
+// };
+
+class Animal {
+  constructor(name, energy) {
+    this.name = name;
+    this.energy = energy;
+  }
+  eat(amount) {}
+  sleep(length) {}
+  play(amount) {}
+}
+const milo = new Animal("Milo", 5);
+const cami = new Animal("Camilia", 3);
 cami.sleep(3);
 milo.play(0.5);
 console.log(milo);
