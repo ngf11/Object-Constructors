@@ -80,9 +80,18 @@ class Animal {
     this.name = name;
     this.energy = energy;
   }
-  eat(amount) {}
-  sleep(length) {}
-  play(amount) {}
+  eat(amount) {
+    console.log(`${this.name} is eating `);
+    this.energy += amount;
+  }
+  sleep(length) {
+    console.log(`${this.name} is sleeping`);
+    this.energy += length;
+  }
+  play(length) {
+    console.log(`${this.name} is playing`);
+    this.energy -= length;
+  }
 }
 const milo = new Animal("Milo", 5);
 const cami = new Animal("Camilia", 3);
@@ -90,3 +99,9 @@ cami.sleep(3);
 milo.play(0.5);
 console.log(milo);
 console.log(cami);
+
+for (let key in milo) {
+  if (milo.hasOwnProperty(key)) {
+    console.log(key + ": " + milo[key]);
+  }
+}
