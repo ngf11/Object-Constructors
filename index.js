@@ -1,2 +1,0 @@
-//---Prototypal inheritance----
-let x = {};
