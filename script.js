@@ -1,41 +1,24 @@
 //---Prototypal inheritance----
-function Hero(name, level) {
+
+function Human(name, age, says) {
   this.name = name;
-  this.level = level;
+  this.age = age;
+  this.says = says;
 }
 
-Hero.prototype.greet = function () {
-  return `${this.name} say Hello`;
+Human.prototype.greet = function () {
+  console.log(`${this.name} says ${this.says}. I am ${this.age} years old`);
 };
 
-function Warrior(name, level, weapon) {
-  Hero.call(this, name, level);
-  this.wepon = weapon;
+function Animal(name, age, says, type) {
+  Human.call(this, name, age, says);
+  this.type = type;
 }
 
-function Healer(name, level, spell) {
-  Hero.call(this, name, level);
+Object.setPrototypeOf(Animal.prototype, Human.prototype);
 
-  this.spell = spell;
-}
-Object.setPrototypeOf(Warrior.prototype, Hero.prototype);
-Object.setPrototypeOf(Healer.prototype, Hero.prototype);
+const nico = new Human("nico", 34, "hi");
+nico.greet();
 
-Warrior.prototype.attack = function () {
-  return `${this.name} attacks with the ${this.weapon}.`;
-};
-
-Healer.prototype.heal = function () {
-  return `${this.name} casts ${this.spell}.`;
-};
-
-const didi = new Hero("Didi Wu", 100);
-console.log(didi.greet());
-
-const nico = new Warrior("nico", 10, "axe");
-console.log(nico);
-console.log(nico.greet());
-
-const siggy = new Healer("siggy", 10, "Black magic");
-console.log(siggy);
-console.log(siggy.greet());
+const milo = new Animal("Milo", 10, "woof", "dog");
+milo.greet();
