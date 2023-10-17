@@ -1,24 +1,26 @@
 //---Prototypal inheritance----
 
-function Human(name, age, says) {
-  this.name = name;
-  this.age = age;
-  this.says = says;
-}
-
-Human.prototype.greet = function () {
-  console.log(`${this.name} says ${this.says}. I am ${this.age} years old`);
+let animal = {
+  eats: true,
+  walk() {
+    console.log("Animal Walking");
+  },
 };
 
-function Animal(name, age, says, type) {
-  Human.call(this, name, age, says);
-  this.type = type;
-}
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+rabbit.walk = function () {
+  console.log("Rabbit! Bounce Bouce!");
+};
+rabbit.walk();
 
-Object.setPrototypeOf(Animal.prototype, Human.prototype);
+let longEar = {
+  earLenght: 10,
+  __proto__: rabbit,
+};
 
-const nico = new Human("nico", 34, "hi");
-nico.greet();
-
-const milo = new Animal("Milo", 10, "woof", "dog");
-milo.greet();
+longEar.walk();
+console.log(longEar.jumps);
+console.log(longEar.eats);
